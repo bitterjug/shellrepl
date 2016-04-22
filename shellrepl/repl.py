@@ -7,11 +7,9 @@ from pygments.lexers.shell import BashLexer
 from .commands import all_commands
 
 
-command_completer = WordCompleter(all_commands())
-
-
 def main():
     history = InMemoryHistory()
+    command_completer = WordCompleter(all_commands())
 
     while True:
         text = prompt(
