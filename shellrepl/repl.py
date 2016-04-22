@@ -12,11 +12,14 @@ def main():
     command_completer = WordCompleter(all_commands())
 
     while True:
-        text = prompt(
-            "$ ",
-            history=history,
-            lexer=BashLexer,
-            completer=command_completer
-        )
-        print("you entered:", text)
+        try:
+            text = prompt(
+                "$ ",
+                history=history,
+                lexer=BashLexer,
+                completer=command_completer
+            )
+            print("you entered:", text)
+        except EOFError:
+            break  # ^D pressed
     print("done")
